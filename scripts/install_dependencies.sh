@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Ensure ubuntu owns the application directory
+sudo chown -R ubuntu:ubuntu /home/ubuntu/my-ml-app
+
 # Update package list
 sudo apt-get update -y
 
