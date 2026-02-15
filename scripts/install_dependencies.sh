@@ -4,8 +4,17 @@ set -e
 # Update package list
 sudo apt-get update -y
 
-# Install Python3 and pip3 if missing
-sudo apt-get install -y python3 python3-pip
+# Install Python and venv support
+sudo apt-get install -y python3 python3-venv python3-pip
 
-# Install project dependencies
-pip3 install -r requirements.txt
+# Create a virtual environment if it doesn't exist
+if [ ! -d "/home/ubuntu/my-ml-app/venv" ]; then
+    python3 -m venv /home/ubuntu/my-ml-app/venv
+fi
+
+# Activate the virtual environment
+source /home/ubuntu/my-ml-app/venv/bin/activate
+
+# Install dependencies inside the venv
+pip install --upgrade pip
+pip install -r /home/ubuntu/my-ml-app/requirements.txt
