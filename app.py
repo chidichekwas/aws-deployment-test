@@ -4,6 +4,10 @@ from model import model
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return "Your ML API is running successfully!"
+
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.json
